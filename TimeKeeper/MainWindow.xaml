@@ -1,0 +1,102 @@
+﻿<Window
+    x:Class="TimeKeeper.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="Time Keeper"
+    Width="180"
+    Height="90"
+    AllowsTransparency="True"
+    Background="#363636"
+    Icon="/timer.png"
+    MouseDown="MainWindow_OnMouseDown"
+    Opacity="0.9"
+    ResizeMode="NoResize"
+    Topmost="True"
+    WindowStartupLocation="Manual"
+    WindowStyle="None"
+    mc:Ignorable="d">
+
+    <Window.ContextMenu>
+        <ContextMenu>
+            <MenuItem Header="Set timer to...">
+                <MenuItem
+                    Command="{Binding SetTimerToCommand}"
+                    CommandParameter="1"
+                    Header="1 min" />
+                <MenuItem
+                    Command="{Binding SetTimerToCommand}"
+                    CommandParameter="2"
+                    Header="2 min" />
+                <MenuItem
+                    Command="{Binding SetTimerToCommand}"
+                    CommandParameter="5"
+                    Header="5 min" />
+                <MenuItem
+                    Command="{Binding SetTimerToCommand}"
+                    CommandParameter="10"
+                    Header="10 min" />
+                <MenuItem
+                    Command="{Binding SetTimerToCommand}"
+                    CommandParameter="25"
+                    Header="25 min" />
+                <MenuItem
+                    Command="{Binding SetTimerToCommand}"
+                    CommandParameter="30"
+                    Header="30 min" />
+                <MenuItem
+                    Command="{Binding SetTimerToCommand}"
+                    CommandParameter="45"
+                    Header="45 min" />
+                <MenuItem
+                    Command="{Binding SetTimerToCommand}"
+                    CommandParameter="50"
+                    Header="50 min" />
+                <MenuItem
+                    Command="{Binding SetTimerToCommand}"
+                    CommandParameter="60"
+                    Header="60 min" />
+                <MenuItem Header="other" />
+            </MenuItem>
+            <!--<MenuItem Header="Set timer until..." />-->
+            <MenuItem Command="{Binding ResetTimerCommand}" Header="Reset timer" />
+            <MenuItem Command="{Binding ToggleTimerCommand}" Header="Start/Stop timer" />
+            <Separator />
+            <MenuItem Command="{Binding CloseCommand}" Header="Close" />
+        </ContextMenu>
+    </Window.ContextMenu>
+
+    <Grid HorizontalAlignment="Center">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Label
+            Grid.Row="0"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Top"
+            Content="TIME KEEPER"
+            FontSize="10"
+            Foreground="White" />
+        <Label
+            Grid.Row="0"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Bottom"
+            Content="{Binding Time}"
+            FontFamily="Aharoni"
+            FontSize="70"
+            FontWeight="SemiBold">
+            <Label.Style>
+                <Style TargetType="Label">
+                    <Setter Property="Foreground" Value="#fafafa" />
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding IsElapsed}" Value="True">
+                            <Setter Property="Foreground" Value="#e53935" />
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Label.Style>
+        </Label>
+    </Grid>
+</Window>

@@ -1,0 +1,22 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <ApplicationIcon>timer.ico</ApplicationIcon>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="timer.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AsyncAwaitBestPractices.MVVM" Version="5.0.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="timer.png" />
+  </ItemGroup>
+
+</Project>
